@@ -1053,7 +1053,7 @@ Computing Machinery]
 \acmConference[Conference'17]{ACM Conference}{July 2017}{Washington,
   DC, USA}
 \def\acmBooktitle#1{\gdef\@acmBooktitle{#1}}
-\acmBooktitle{Proceedings of \acmConference@name
+\acmBooktitle{\acmConference@name
        \ifx\acmConference@name\acmConference@shortname\else
          \ (\acmConference@shortname)\fi}
 \def\@editorsAbbrev{(Ed.)}
@@ -1311,7 +1311,8 @@ Computing Machinery]
     acmcopyright,acmlicensed,rightsretained,%
     usgov,usgovmixed,cagov,cagovmixed,%
     licensedusgovmixed,%
-    licensedcagov,licensedcagovmixed,othergov,licensedothergov}{%
+    licensedcagov,licensedcagovmixed,othergov,licensedothergov,%
+    ccbynd,ccby}{%
   \@printpermissiontrue
   \@printcopyrighttrue
   \@acmownedtrue
@@ -1350,6 +1351,12 @@ Computing Machinery]
   \fi
   \ifnum\acm@copyrightmode=12\relax % licensedothergov
    \@acmownedfalse
+  \fi
+  \ifnum\acm@copyrightmode=13\relax % ccbynd
+   \@acmownedfalse
+  \fi
+  \ifnum\acm@copyrightmode=14\relax % ccby
+   \@acmownedfalse
   \fi}
 \def\setcopyright#1{\setkeys{ACM@}{acmcopyrightmode=#1}}
 \setcopyright{acmcopyright}
@@ -1383,6 +1390,10 @@ Computing Machinery]
   \or % licensedothergov
   Copyright held by the owner/author(s). Publication rights licensed to
   Association for Computing Machinery.
+  \or % ccbynd
+  Copyright held by the owner/author(s).
+  \or % ccby
+  Copyright held by the owner/author(s).
   \fi}
 \def\@formatdoi#1{\url{https://doi.org/#1}}
 \def\@copyrightpermission{%
@@ -1496,6 +1507,10 @@ Computing Machinery]
    retains a nonexclusive, royalty-free right to publish or reproduce
    this article, or to allow others to do so, for Government purposes
    only.
+  \or % ccbynd
+   This work is licensed under \href{http://creativecommons.org/licenses/by-nd/4.0/}{Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)}.
+  \or % ccby
+   This work is licensed under \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License (CC BY 4.0)}.
   \fi}
 \def\copyrightyear#1{\def\@copyrightyear{#1}}
 \copyrightyear{\@acmYear}
@@ -2090,14 +2105,14 @@ Computing Machinery]
      \@acmVolume, \@acmNumber \@article@string (\@acmPubDate),
      \ref{TotPages}~\@pages@word.
   \else
-     In \textit{\@acmBooktitle}%
+     Presented at \textit{\@acmBooktitle}%
      \ifx\@acmEditors\@empty\textit{.}\else
        \andify\@acmEditors\textit{, }\@acmEditors~\@editorsAbbrev.%
      \fi\
-     ACM, New York, NY, USA%
-       \@article@string\unskip, \ref{TotPages}~\@pages@word.
+     %
+     \ref{TotPages}~\@pages@word.
   \fi
-  \@formatdoi{\@acmDOI}
+  % \@formatdoi{\@acmDOI}
 \par\egroup}
 \def\@printendtopmatter{\par\bigskip}
 \def\@setthanks{\long\def\thanks##1{\par##1\@addpunct.}\thankses}
