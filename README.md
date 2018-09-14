@@ -1,4 +1,4 @@
-Meta'18 Author Kit
+VMIL'18 Author Kit
 ==================
 
 This repository contains an adapted version of the ACMART SIGPLAN conference latex template.
